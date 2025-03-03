@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+.bookclub-container {
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('path-to-books-image.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.tagline {
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.subheading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.get-started-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: #d2b48c; /* Beige color (changed from burlywood) */
+  color: #3a2e24; /* Dark brown for text */
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.get-started-btn:hover {
+  background-color: #a89078; /* Darker beige on hover (changed from brown) */
+  transform: translateY(-2px);
+}
+
+/* Why Us Section */
+.why-us {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f5f1ea; /* Light beige background (changed from #f9f9f9) */
+}
+
+.why-us h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: #5d4c40; /* Brown color (changed from #2c3e50) */
+}
+
+.reasons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.reason-card {
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(139, 119, 101, 0.15); /* Brownish shadow (changed) */
+}
+
+.reason-card h3 {
+  color: #8b7a64; /* Taupe color (changed from #2ecc71) */
+  margin-bottom: 1rem;
+}
+
+/* Simple Footer */
+.simple-footer {
+  background-color: #5d4c40; /* Brown color (changed from #2c3e50) */
+  color: #f5f1ea; /* Light beige text */
+  padding: 2rem;
+  text-align: center;
+}
+
+.social-links {
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  color: #f5f1ea; /* Light beige text */
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #d2b48c; /* Beige hover color (changed from #2ecc71) */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tagline {
+    font-size: 1.8rem;
+    letter-spacing: 0.3rem;
+  }
+  
+  .subheading {
+    font-size: 1.5rem;
+  }
+  
+  .why-us {
+    padding: 3rem 1rem;
+  }
+}

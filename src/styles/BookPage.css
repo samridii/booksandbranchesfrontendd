@@ -1,0 +1,543 @@
+/* BookShelf.css */
+/* Books and Branches - Brownish & Beige Theme */
+
+/* Ensuring we use the same variables from UserDashboard.css */
+:root {
+  --primary-brown: #8B4513;
+  --dark-brown: #5D3A1A;
+  --medium-brown: #A6754C;
+  --light-brown: #D2B48C;
+  --cream: #F5F5DC;
+  --beige: #E8DCC4;
+  --soft-beige: #F2EAD3;
+  --off-white: #FFFFF0;
+  --text-dark: #362715;
+  --text-medium: #6D4C3D;
+  --shadow: rgba(91, 64, 38, 0.2);
+  --transition: all 0.3s ease;
+}
+
+/* BookShelf Main Container */
+.bookshelf-container {
+  min-height: 100vh;
+  background-color: var(--soft-beige);
+  padding: 20px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* BookShelf Header */
+.bookshelf-header {
+  background-color: var(--light-brown);
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 10px var(--shadow);
+  background-image: linear-gradient(to right, var(--light-brown), var(--beige));
+}
+
+.bookshelf-header h1 {
+  color: var(--text-dark);
+  margin: 0;
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.bookshelf-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-brown);
+}
+
+.bookshelf-header p {
+  color: var(--text-medium);
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+/* Controls Section */
+.bookshelf-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.search-bar {
+  position: relative;
+  flex-grow: 1;
+  max-width: 500px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px 20px 12px 45px;
+  border: 2px solid var(--light-brown);
+  border-radius: 25px;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--primary-brown);
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.2);
+}
+
+.search-bar::before {
+  content: '🔍';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-medium);
+  font-size: 1.1rem;
+}
+
+.filter-options {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-select {
+  padding: 10px 15px;
+  border: 2px solid var(--light-brown);
+  border-radius: 20px;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-family: 'Georgia', serif;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-brown);
+}
+
+.add-book-btn {
+  background-color: var(--primary-brown);
+  color: var(--cream);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-book-btn:hover {
+  background-color: var(--dark-brown);
+  transform: translateY(-2px);
+}
+
+.add-book-btn::before {
+  content: '+';
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Books Grid */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+/* Book Card */
+.book-card {
+  background-color: var(--cream);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card:hover {
+  transform: translateY(-8px) rotate(1deg);
+  box-shadow: 0 15px 30px var(--shadow);
+}
+
+.book-cover {
+  height: 250px;
+  background-color: var(--medium-brown);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.book-card:hover .book-cover img {
+  transform: scale(1.05);
+}
+
+.book-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--primary-brown);
+  color: var(--cream);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.reading-now {
+  background-color: #4B7F52; /* Green for reading now */
+}
+
+.completed {
+  background-color: var(--primary-brown);
+}
+
+.want-to-read {
+  background-color: #7D6E83; /* Purple for want to read */
+}
+
+.book-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  margin: 0 0 8px 0;
+  color: var(--primary-brown);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.book-author {
+  color: var(--text-medium);
+  margin: 0 0 15px 0;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.book-description {
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.book-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-medium);
+  font-size: 0.85rem;
+  margin-top: auto;
+}
+
+.book-pages {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.book-pages::before {
+  content: '📄';
+  font-size: 0.9rem;
+}
+
+.book-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  color: #FFD700;
+  margin-left: 2px;
+}
+
+/* Book Actions */
+.book-actions {
+  display: flex;
+  border-top: 1px solid var(--light-brown);
+}
+
+.book-action-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-medium);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.book-action-btn:hover {
+  background-color: var(--beige);
+  color: var(--primary-brown);
+}
+
+.book-action-btn:not(:last-child) {
+  border-right: 1px solid var(--light-brown);
+}
+
+/* Empty Bookshelf State */
+.empty-bookshelf {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: var(--cream);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.empty-bookshelf h3 {
+  color: var(--primary-brown);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.empty-bookshelf p {
+  color: var(--text-medium);
+  margin-bottom: 20px;
+}
+
+.empty-bookshelf-btn {
+  background-color: var(--primary-brown);
+  color: var(--cream);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.empty-bookshelf-btn:hover {
+  background-color: var(--dark-brown);
+  transform: translateY(-2px);
+}
+
+/* Book Spine Decoration */
+.book-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background: linear-gradient(to bottom, var(--primary-brown), var(--medium-brown));
+  z-index: 2;
+}
+
+/* Paper Texture */
+.book-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' fill='%23000000'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  gap: 5px;
+}
+
+.page-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--light-brown);
+  border-radius: 50%;
+  background-color: var(--cream);
+  color: var(--text-medium);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.page-btn:hover {
+  background-color: var(--beige);
+  border-color: var(--medium-brown);
+}
+
+.page-btn.active {
+  background-color: var(--primary-brown);
+  color: var(--cream);
+  border-color: var(--primary-brown);
+}
+
+.page-btn.prev::before {
+  content: '←';
+}
+
+.page-btn.next::before {
+  content: '→';
+}
+
+/* Reading Progress Bar for "Reading Now" Books */
+.reading-progress {
+  height: 6px;
+  background-color: var(--light-brown);
+  margin-top: -6px;
+  position: relative;
+  z-index: 3;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-brown);
+  width: 65%; /* Example value - would be dynamic */
+}
+
+/* Reading List Section */
+.reading-lists {
+  background-color: var(--cream);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.reading-lists h2 {
+  color: var(--primary-brown);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.reading-lists h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--medium-brown);
+}
+
+.list-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--light-brown);
+  margin-bottom: 20px;
+}
+
+.list-tab {
+  padding: 12px 20px;
+  color: var(--text-medium);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.list-tab:hover {
+  color: var(--primary-brown);
+}
+
+.list-tab.active {
+  color: var(--primary-brown);
+  border-bottom-color: var(--primary-brown);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .books-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+  
+  .bookshelf-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-bar {
+    max-width: 100%;
+  }
+  
+  .filter-options {
+    flex-wrap: wrap;
+  }
+  
+  .book-cover {
+    height: 200px;
+  }
+  
+  .book-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Book Hover Animation */
+@keyframes bookFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.book-card:hover {
+  animation: bookFloat 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--soft-beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--medium-brown);
+  border-radius: 6px;
+  border: 3px solid var(--soft-beige);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-brown);
+}
