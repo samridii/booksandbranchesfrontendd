@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "../../styles/AdminDashboard.css";
 
 // Mock ViewUsers Component
@@ -53,41 +53,79 @@ function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [books, setBooks] = useState([]);
   const [activePage, setActivePage] = useState("users");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  // Fetch users from API
+  const fetchUsers = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("https://api.example.com/users"); // Replace with your API endpoint
+      if (!response.ok) throw new Error("Failed to fetch users");
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch books from API
+  const fetchBooks = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("https://api.example.com/books"); // Replace with your API endpoint
+      if (!response.ok) throw new Error("Failed to fetch books");
+      const data = await response.json();
+      setBooks(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const mockUsers = [
-      { id: 1, name: "Yunisha Kc", email: "yunisha123@example.com" },
-      { id: 2, name: "Grishma Thapa", email: "thapa22@example.com" },
-    ];
-    setUsers(mockUsers);
-
-    // Simulate fetching books
-    const mockBooks = [
-      { id: 1, title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-      { id: 2, title: "To Kill a Mockingbird", author: "Harper Lee" },
-    ];
-    setBooks(mockBooks);
-  }, []);
+    if (activePage === "users") {
+      fetchUsers();
+    } else {
+      fetchBooks();
+    }
+  }, [activePage]);
 
   const handleDeleteUser = async (id) => {
-    // Simulate deleting a user
-    setUsers(users.filter((user) => user.id !== id));
+    try {
+      const response = await fetch(`https://api.example.com/users/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) throw new Error("Failed to delete user");
+      setUsers(users.filter((user) => user.id !== id));
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   const handleDeleteBook = async (id) => {
-    // Simulate deleting a book
-    setBooks(books.filter((book) => book.id !== id));
+    try {
+      const response = await fetch(`https://api.example.com/books/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) throw new Error("Failed to delete book");
+      setBooks(books.filter((book) => book.id !== id));
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
-  // Handle logout
   const handleLogout = () => {
-    // Clear any admin-related data from localStorage (if applicable)
     localStorage.removeItem("admin");
-
-    // Redirect to the Login page
     navigate("/login");
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="dashboard">
@@ -95,7 +133,6 @@ function AdminDashboard() {
         <ul>
           <li onClick={() => setActivePage("users")}>View Users</li>
           <li onClick={() => setActivePage("books")}>View Books</li>
-          {/* Logout Button */}
           <li onClick={handleLogout}>Logout</li>
         </ul>
       </nav>

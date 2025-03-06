@@ -33,8 +33,7 @@ const AddBook = ({ onAddBook }) => {
     setBookName("");
     setRating("");
     setAuthor("");
-    setMessage("Book added successfully! ✅"); // Show success message
-
+    setMessage("Book added successfully! ✅"); 
     // Hide message after 3 seconds
     setTimeout(() => setMessage(""), 3000);
   };
